@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;}
+
+body{background-color: #212835;
+    font-size: 15px;}
+
+.video_wrap{
+    width: 1400px;
+    margin: 0 auto;  /* 가운데 정렬 */
+    height: 100vh;
+}
+
+.main_container{
+    padding: 25px;
+}
+
+.trends{
+    display: flex;
+    justify-content: flex-end;
+}
+.trends #play-all{
+    display: flex;   /* 부모한테 자식을 옆으로 정렬시키라는 뜻 */
+    align-items: center;
+    background-color: #fa3a2f;
+    color: #fff;
+    width: 95px;
+    padding:  10px 30px;
+    border-radius: 30px;
+}
+.trends #play-all i{
+    margin-right: 16px;
+}
+.trends #play-all i.fa-play{
+    display: none;
+}
+.trends #play-all.on i.fa-play{
+    display: block;
+}
+.trends #play-all i.fa-pause{
+    display: block;
+}
+.trends #play-all.on i.fa-pause{
+    display: none;
+}
+
+.trends #play-all em{font-style: normal;}
+
+.videos{
+    display: flex;  /* 자식들을 옆으로 정렬해라. flex는 float과 달리 자식 넓이를 강제로 줄여서라도 다 정렬시킴 */
+    flex-wrap: wrap;  /* 넓이 100%보다 넘치는 건 아래로 떨어뜨려라 */
+}  
+.videos .video{
+    position: relative;
+    width: 23%; margin: 1%;  /* margin이나 padding의 기준은 부모의 넓이 */
+    padding-top: 9%;  /* 반응형에서 자주 쓰임. 패딩은 내 안의 공간. */
+    overflow: hidden;
+}
+.videos .video .video-time{
+    position: absolute;
+    right: 6px; top: 65px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    transition: 0.3s;
+}
+.videos .video:hover .video-time{opacity: 0;}
+.videos .video video{
+    width: 100%;  /* 넓이를 부모(.video)의 100%에 맞추겠다 */
+    position: absolute; left: 0; top: 0;
+    transition: 0.5s;
+}
+.videos .video:hover video{
+    transform: scale(2.2);
+    transform-origin: center top;  /* 비디오 크기가 커질 때 전환점을 위쪽 가운데로 바꿈. */
+    z-index: 30;  /* 비디오 크기가 커질 때 .video의 화면을 다 채우게 */
+}
+.videos .video .video-content{
+    background: #fff; color: #808080;
+    padding: 15px 10px 0;
+    z-index: 20; position: relative;
+}
+.videos .video .view{
+    background: #fff;
+    padding: 10px;
+    font-size: 13px;
+    z-index: 20; position: relative;
+}
